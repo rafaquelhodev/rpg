@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bk35mt3gqns2j"]
+[gd_scene load_steps=57 format=3 uid="uid://bk35mt3gqns2j"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_mid74"]
 [ext_resource type="Texture2D" uid="uid://d3lhevsr4cbhs" path="res://art/characters/player.png" id="2_c111r"]
@@ -416,6 +416,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_1enad"]
 radius = 5.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mm7hl"]
+radius = 18.0
+
 [node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 3
@@ -429,3 +432,17 @@ offset = Vector2(0, -15)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_1enad")
+
+[node name="player_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_mm7hl")
+debug_color = Color(0.929412, 0.211765, 0.407843, 0.419608)
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
