@@ -51,9 +51,9 @@ func _on_enemy_hitbox_body_exited(body: Node2D) -> void:
 		player_in_attack_range = null
 
 func attack(player):
-	player.being_attacked(DAMAGE)
+	player.handle_attack(DAMAGE)
 
-func being_attacked(damage):
+func handle_attack(damage):
 	health -= damage
 	print("enemy health")
 	print(health)
