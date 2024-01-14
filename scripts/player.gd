@@ -49,7 +49,7 @@ func player_movement(delta: float) -> void:
 		play_animation(false)		
 		velocity.x = 0.0
 		velocity.y = 0.0
-		
+	
 	move_and_slide()
 	
 func play_animation(is_moving):

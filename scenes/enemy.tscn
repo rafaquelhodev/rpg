@@ -180,14 +180,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_30rw3"]
-radius = 34.0147
+[sub_resource type="CircleShape2D" id="CircleShape2D_f3nry"]
+radius = 31.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ba5tg"]
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8yv3s"]
-radius = 13.0
+radius = 12.1655
 
 [node name="enemy" type="CharacterBody2D"]
 script = ExtResource("1_eypad")
@@ -202,13 +202,16 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
-shape = SubResource("CircleShape2D_30rw3")
+shape = SubResource("CircleShape2D_f3nry")
+debug_color = Color(0.72549, 0.305882, 0.909804, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_ba5tg")
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
 position = Vector2(0, -4)

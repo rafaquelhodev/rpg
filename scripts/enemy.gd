@@ -14,7 +14,10 @@ signal enemy_got_hit(amount)
 
 func _physics_process(delta: float) -> void:
 	if player:
-		position += (player.position - position)/speed
+		var dir_vector = (player.position - position)
+		var dir_vector_normalized = dir_vector.normalized()
+		var speed_vector = speed*dir_vector_normalized
+		velocity = speed_vector
 		maybe_flip(player)
 		move_and_slide()
 		
